@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -35,17 +36,20 @@ namespace OperacionesAPIUnitTest
             var baseUri = new Uri("http://localhost:5000/");
             var route = $"/resultados/{idValido}";
             var route2 = $"/resultados/{idNoValido}";
+            var route3 = $"/resultados/";
             var client = _platformFixture.CreateClient();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            
+            /*Caso Ok*/
             var result = client.GetAsync(route).Result;
             Assert.Equal(HttpStatusCode.OK,result.StatusCode);
-            //using (var objClint = new HttpClient())
-            //{
-            //    objClint.BaseAddress = baseUri;
-            //    var respon =  objClint.GetAsync(route).Result;
-            //    //var respon2 = objClint.GetAsync(route2).ConfigureAwait(true);
-            //    Assert.Equal(respon.StatusCode.ToString(), HttpStatusCode.OK.ToString());
-            //    //Assert.Equal(respon2, HttpStatusCode.NotFound.ToString());
-            //}
+            /*Caso NotFound*/
+            result = client.GetAsync(route2).Result;
+            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+
+            /*Caso */
+            result = client.GetAsync(route3).Result;
+            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
         }
     }
 }

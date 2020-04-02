@@ -38,6 +38,9 @@
     <None Update="DB-ApiEjercicio.db.sqbpro">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="DBEjercicio.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="openapi.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

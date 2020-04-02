@@ -1,0 +1,158 @@
+2020-04-01 09:10:29.691 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Try to start Server in Version: 1.0.0.0
+2020-04-01 09:10:29.762 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart()
+2020-04-01 09:10:29.879 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Now listening on: http://localhost:5000
+2020-04-01 09:10:29.883 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Environment Name: [Development]
+2020-04-01 09:10:30.519 | 1 | INFO | OperacionesApi | Infra.Data.DataAccessRegistry | ExpirationEnabled [true], ExpirationPollFrecuency [1800]sec, ExpirationTime [3600]sec.
+2020-04-01 09:10:30.532 | 1 | INFO | OperacionesApi | Infra.Data.Cache.ExpirationPollTimer | Starting expiration pulling... Polling will be execute every [1800] seconds.
+2020-04-01 09:10:31.156 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | Subscribe to PedidosDeAlmacen/Traza/PedidoCreado
+2020-04-01 09:10:31.402 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart() returned
+2020-04-01 09:10:31.413 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StartReceiving from Queue.
+2020-04-01 09:10:31.442 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 09:11:45.565 | 6 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e19c3  
+2020-04-01 09:12:04.290 | 6 | INFO | OperacionesApi | OperacionesApi.Modules.ResultadosModule | Obteniendo resultado de la operacion e19c3
+2020-04-01 09:12:04.771 | 6 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 19248.4235ms 500 text/html
+2020-04-01 09:12:42.241 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e100c3  
+2020-04-01 09:12:58.875 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 16669.7639ms 500 text/html
+2020-04-01 09:15:33.382 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e100c3 application/json 12
+2020-04-01 09:16:22.090 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 48708.1061ms 404 application/json; charset=utf-8
+2020-04-01 09:16:53.369 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultadoss/e19c3 application/json 12
+2020-04-01 09:16:53.379 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 9.8915ms 404 application/json; charset=utf-8
+2020-04-01 09:17:04.149 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e19c3 application/json 12
+2020-04-01 09:17:54.713 | 13 | INFO | OperacionesApi | OperacionesApi.Modules.ResultadosModule | Obteniendo resultado de la operacion e19c3
+2020-04-01 09:18:08.111 | 13 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 63962.3256ms 200 application/json; charset=utf-8
+2020-04-01 09:18:17.729 | 2 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStop()
+2020-04-01 09:18:17.766 | 21 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StopReceiving from Queue.
+2020-04-01 09:18:17.770 | 21 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Stoping IbmMQManagedConnection
+2020-04-01 09:18:17.774 | 21 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | IBM MQ Connection Stoping.
+2020-04-01 09:20:37.078 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Try to start Server in Version: 1.0.0.0
+2020-04-01 09:20:37.231 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart()
+2020-04-01 09:20:37.369 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Now listening on: http://localhost:5000
+2020-04-01 09:20:37.373 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Environment Name: [Development]
+2020-04-01 09:20:38.141 | 1 | INFO | OperacionesApi | Infra.Data.DataAccessRegistry | ExpirationEnabled [true], ExpirationPollFrecuency [1800]sec, ExpirationTime [3600]sec.
+2020-04-01 09:20:38.154 | 1 | INFO | OperacionesApi | Infra.Data.Cache.ExpirationPollTimer | Starting expiration pulling... Polling will be execute every [1800] seconds.
+2020-04-01 09:20:38.868 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | Subscribe to PedidosDeAlmacen/Traza/PedidoCreado
+2020-04-01 09:20:39.110 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart() returned
+2020-04-01 09:20:39.130 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StartReceiving from Queue.
+2020-04-01 09:20:39.187 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 09:22:42.512 | 6 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e19c3  
+2020-04-01 09:24:53.404 | 6 | INFO | OperacionesApi | OperacionesApi.Modules.ResultadosModule | Obteniendo resultado de la operacion e19c3
+2020-04-01 09:24:59.032 | 6 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 136545.5036ms 500 text/html
+2020-04-01 09:25:40.041 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 09:25:40.047 | 8 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 09:26:06.157 | 8 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e19c3  
+2020-04-01 09:26:11.097 | 8 | INFO | OperacionesApi | OperacionesApi.Modules.ResultadosModule | Obteniendo resultado de la operacion e19c3
+2020-04-01 09:26:14.341 | 8 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 8183.3045ms 500 text/html
+2020-04-01 09:26:25.404 | 12 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e100c3  
+2020-04-01 09:26:28.851 | 12 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 3447.1996ms 500 text/html
+2020-04-01 09:30:40.370 | 9 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ exception while getting messages.
+CompCode: 2, Reason: 2018
+2020-04-01 09:30:40.377 | 9 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 09:30:40.383 | 9 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 09:40:40.707 | 6 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ exception while getting messages.
+CompCode: 2, Reason: 2018
+2020-04-01 09:40:40.751 | 6 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 09:40:40.759 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 09:50:40.983 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ exception while getting messages.
+CompCode: 2, Reason: 2018
+2020-04-01 09:50:41.019 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 09:50:41.025 | 8 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 10:00:41.386 | 6 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 10:00:41.403 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 10:10:41.762 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ exception while getting messages.
+CompCode: 2, Reason: 2018
+2020-04-01 10:10:41.806 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 10:10:41.813 | 8 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 10:20:42.325 | 6 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ exception while getting messages.
+CompCode: 2, Reason: 2018
+2020-04-01 10:20:42.373 | 6 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 10:20:42.379 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 10:30:42.579 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ exception while getting messages.
+CompCode: 2, Reason: 2018
+2020-04-01 10:30:42.596 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 10:30:42.605 | 8 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 10:34:03.444 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e19c3  
+2020-04-01 10:34:10.432 | 7 | INFO | OperacionesApi | OperacionesApi.Modules.ResultadosModule | Obteniendo resultado de la operacion e19c3
+2020-04-01 10:34:10.438 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 6993.7841ms 500 text/html
+2020-04-01 10:34:10.454 | 8 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e100c3  
+2020-04-01 10:46:01.101 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Try to start Server in Version: 1.0.0.0
+2020-04-01 10:46:01.172 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart()
+2020-04-01 10:46:01.286 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Now listening on: http://localhost:5000
+2020-04-01 10:46:01.289 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Environment Name: [Development]
+2020-04-01 10:46:01.735 | 1 | INFO | OperacionesApi | Infra.Data.DataAccessRegistry | ExpirationEnabled [true], ExpirationPollFrecuency [1800]sec, ExpirationTime [3600]sec.
+2020-04-01 10:46:01.743 | 1 | INFO | OperacionesApi | Infra.Data.Cache.ExpirationPollTimer | Starting expiration pulling... Polling will be execute every [1800] seconds.
+2020-04-01 10:46:02.145 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | Subscribe to PedidosDeAlmacen/Traza/PedidoCreado
+2020-04-01 10:46:02.296 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart() returned
+2020-04-01 10:46:02.305 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StartReceiving from Queue.
+2020-04-01 10:46:02.328 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 10:46:23.952 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e19c3  
+2020-04-01 10:46:30.760 | 7 | INFO | OperacionesApi | OperacionesApi.Modules.ResultadosModule | Obteniendo resultado de la operacion e19c3
+2020-04-01 10:46:30.959 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 7012.2973ms 500 text/html
+2020-04-01 10:46:46.218 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e100c3  
+2020-04-01 11:49:19.555 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 3753363.8964ms 500 text/html
+2020-04-01 11:49:21.533 | 9 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 11:49:21.536 | 9 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 11:59:21.849 | 13 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 11:59:21.852 | 13 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 12:04:22.246 | 9 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | MQ Connection broken. Forcing reconnect.
+CompCode: 2, Reason: 2009
+2020-04-01 12:04:22.249 | 9 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 12:05:17.920 | 2 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStop()
+2020-04-01 12:05:17.946 | 13 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StopReceiving from Queue.
+2020-04-01 12:05:17.949 | 13 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Stoping IbmMQManagedConnection
+2020-04-01 12:05:17.951 | 13 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | IBM MQ Connection Stoping.
+2020-04-01 12:05:22.879 | 15 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | IBM MQ Connection Stopped.
+2020-04-01 12:05:22.893 | 13 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Waiting to close Queue gracefully.
+2020-04-01 17:21:55.961 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Try to start Server in Version: 1.0.0.0
+2020-04-01 17:21:56.052 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart()
+2020-04-01 17:21:56.172 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Now listening on: http://localhost:5000
+2020-04-01 17:21:56.174 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Environment Name: [Development]
+2020-04-01 17:21:56.684 | 1 | INFO | OperacionesApi | Infra.Data.DataAccessRegistry | ExpirationEnabled [true], ExpirationPollFrecuency [1800]sec, ExpirationTime [3600]sec.
+2020-04-01 17:21:56.692 | 1 | INFO | OperacionesApi | Infra.Data.Cache.ExpirationPollTimer | Starting expiration pulling... Polling will be execute every [1800] seconds.
+2020-04-01 17:21:57.236 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | Subscribe to PedidosDeAlmacen/Traza/PedidoCreado
+2020-04-01 17:21:57.441 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart() returned
+2020-04-01 17:21:57.454 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StartReceiving from Queue.
+2020-04-01 17:21:57.490 | 7 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 17:22:18.844 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Unhandled exception while reconnecting.
+CompCode: 2, Reason: 2538
+2020-04-01 17:22:21.602 | 6 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/resultados/e19c3 application/json 12
+2020-04-01 17:22:24.834 | 8 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 17:22:24.990 | 6 | INFO | OperacionesApi | OperacionesApi.Modules.ResultadosModule | Obteniendo resultado de la operacion e19c3
+2020-04-01 17:22:25.232 | 6 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 3636.7494ms 200 application/json; charset=utf-8
+2020-04-01 17:22:45.866 | 9 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Unhandled exception while reconnecting.
+CompCode: 2, Reason: 2538
+2020-04-01 17:22:50.882 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 17:23:11.892 | 8 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Unhandled exception while reconnecting.
+CompCode: 2, Reason: 2538
+2020-04-01 17:23:16.898 | 6 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 17:23:37.912 | 9 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Unhandled exception while reconnecting.
+CompCode: 2, Reason: 2538
+2020-04-01 17:23:42.925 | 7 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 17:24:03.944 | 6 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Unhandled exception while reconnecting.
+CompCode: 2, Reason: 2538
+2020-04-01 17:24:08.958 | 8 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 17:24:29.970 | 7 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Unhandled exception while reconnecting.
+CompCode: 2, Reason: 2538
+2020-04-01 17:24:34.977 | 7 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 17:24:55.990 | 9 | WARN | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Unhandled exception while reconnecting.
+CompCode: 2, Reason: 2538
+2020-04-01 17:25:01.003 | 9 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-01 20:48:12.061 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Try to start Server in Version: 1.0.0.0
+2020-04-01 20:48:12.179 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart()
+2020-04-01 20:48:12.482 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Now listening on: http://localhost:5000
+2020-04-01 20:48:12.490 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Environment Name: [Development]
+2020-04-01 20:48:13.282 | 1 | INFO | OperacionesApi | Infra.Data.DataAccessRegistry | ExpirationEnabled [true], ExpirationPollFrecuency [1800]sec, ExpirationTime [3600]sec.
+2020-04-01 20:48:13.293 | 1 | INFO | OperacionesApi | Infra.Data.Cache.ExpirationPollTimer | Starting expiration pulling... Polling will be execute every [1800] seconds.
+2020-04-01 20:48:13.808 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | Subscribe to PedidosDeAlmacen/Traza/PedidoCreado
+2020-04-01 20:48:13.992 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart() returned
+2020-04-01 20:48:14.000 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StartReceiving from Queue.
+2020-04-01 20:48:14.022 | 8 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ

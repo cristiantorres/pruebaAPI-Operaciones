@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: API Operaciones
+  description: "# Introduccion\nAPI HTTP que sirve para la creación y calculo de operaciones suma. 
+    Al ser una aplicacion construida sobre el chasis Platform la misma hereda el modulo de HealthCheck. A continuacion se detallan las operaciones de la misma."
+  version: v1.0.0
+  contact:
+    name: Cristian Torres
+    email: ctorres@andreani.com
+
+tags:
+  - name: Operaciones
+    description: operaciones.
+  - name: Resultados
+    description: resultado.
+paths:
+  /resultados/{id}:
+    get:
+      tags:
+        - resultados
+      summary: crea una operacion
+      description: Permite obtener el resultado de una operacion.
+      parameters:
+          - in: path
+            name: id   
+            required: true
+            schema:
+              type: string
+              minimum: 1
+            description: id de la operacion
+      responses:
+        200:
+          description: retorna el resultado de la operacion
+          content:
+           application/json:
+            schema:
+             $ref: '#/components/schemas/Resultado'
+        404:
+           description: El resultado con el idOperacion no fue encontrado
+  /operaciones:
+    post:
+      tags:
+        - operaciones
+      summary: crea una operacion
+      description: Permite crear una operacion.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operacion'
+      responses:
+        202:
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link:
+                    type: string
+                    description: "La operacion  ha sido dado de alta"
+        422:
+          description: UnprocessableEntity
+ 
+components:
+  schemas:
+    Resultado:
+      type: object
+      properties:
+        id:
+          type: string
+        resultado:
+          type: number
+    Operacion:  
+      type: object
+      properties:
+        firstValue:
+          type: number
+        secondValue:
+          type: number
+        type:
+          type: string
+   
+

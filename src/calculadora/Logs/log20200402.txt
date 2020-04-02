@@ -1,0 +1,10 @@
+2020-04-02 09:55:20.394 | 1 | INFO | Calculadora | Infra.Full.Configuration.ServiceWrapper | Try to start Server in Version: 1.0.0.0
+2020-04-02 09:55:20.487 | 1 | INFO | Calculadora | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart()
+2020-04-02 09:55:20.680 | 1 | INFO | Calculadora | Infra.WebHost.Startup | Now listening on: http://localhost:5001
+2020-04-02 09:55:20.683 | 1 | INFO | Calculadora | Infra.WebHost.Startup | Environment Name: [Development]
+2020-04-02 09:55:21.569 | 1 | INFO | Calculadora | Infra.EventBus.IbmMQ.QueueConsumerService | Subscribe to PedidosDeAlmacen/Traza/PedidoAsignado
+2020-04-02 09:55:21.711 | 1 | INFO | Calculadora | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart() returned
+2020-04-02 09:55:21.720 | 1 | INFO | Calculadora | Infra.EventBus.IbmMQ.QueueConsumerService | StartReceiving from Queue.
+2020-04-02 09:55:21.745 | 6 | INFO | Calculadora | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BORRARME.REQ
+2020-04-02 09:55:43.774 | 7 | INFO | Calculadora | Calculadora.Handlers.PedidoAsignadoHandler | Se realizo el calculo de la operacion ID: 7813a
+2020-04-02 09:55:56.132 | 7 | INFO | Calculadora | Calculadora.Handlers.PedidoAsignadoHandler | Se realizo el calculo de la operacion ID: 94a92

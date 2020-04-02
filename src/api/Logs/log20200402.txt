@@ -1,0 +1,23 @@
+2020-04-02 09:37:46.970 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Try to start Server in Version: 1.0.0.0
+2020-04-02 09:37:47.047 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart()
+2020-04-02 09:37:47.232 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Now listening on: http://localhost:5000
+2020-04-02 09:37:47.238 | 1 | INFO | OperacionesApi | Infra.WebHost.Startup | Environment Name: [Development]
+2020-04-02 09:37:48.027 | 1 | INFO | OperacionesApi | Infra.Data.DataAccessRegistry | ExpirationEnabled [true], ExpirationPollFrecuency [1800]sec, ExpirationTime [3600]sec.
+2020-04-02 09:37:48.039 | 1 | INFO | OperacionesApi | Infra.Data.Cache.ExpirationPollTimer | Starting expiration pulling... Polling will be execute every [1800] seconds.
+2020-04-02 09:37:48.919 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | Subscribe to PedidosDeAlmacen/Traza/PedidoCreado
+2020-04-02 09:37:49.122 | 1 | INFO | OperacionesApi | Infra.Full.Configuration.ServiceWrapper | Informing Listeners about OnStart() returned
+2020-04-02 09:37:49.131 | 1 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.QueueConsumerService | StartReceiving from Queue.
+2020-04-02 09:37:49.154 | 7 | INFO | OperacionesApi | Infra.EventBus.IbmMQ.IbmMQManagedConnection | Connecting to IBM MQ GA02.AR.T.QM - Channel ITG.TO.GA02.TEST - Connection Info 192.6.6.39(1416) - Queue QL.BULPYMED.TEST.REQ
+2020-04-02 09:39:44.389 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/api-docs  
+2020-04-02 09:39:44.544 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 174.103ms 301 
+2020-04-02 09:39:44.550 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/api-docs/  
+2020-04-02 09:39:44.657 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware | Sending file. Request path: '/index.html'. Physical path: 'N/A'
+2020-04-02 09:39:44.664 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 113.8429ms 200 text/html
+2020-04-02 09:40:02.286 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 GET http://localhost:5000/health  
+2020-04-02 09:40:03.159 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 873.1313ms 200 application/json; charset=utf-8
+2020-04-02 09:40:45.348 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 POST http://localhost:5000/operaciones application/json 55
+2020-04-02 09:41:38.569 | 7 | INFO | OperacionesApi | OperacionesApi.Modules.OperacionesModule | operacion registrada...
+2020-04-02 09:41:38.711 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 53363.525ms 200 application/json; charset=utf-8
+2020-04-02 09:44:42.695 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request starting HTTP/1.1 POST http://localhost:5000/operaciones application/json 55
+2020-04-02 09:44:46.955 | 7 | INFO | OperacionesApi | OperacionesApi.Modules.OperacionesModule | operacion registrada...
+2020-04-02 09:44:46.963 | 7 | INFO | OperacionesApi | Microsoft.AspNetCore.Hosting.Internal.WebHost | Request finished in 4267.8127ms 200 application/json; charset=utf-8

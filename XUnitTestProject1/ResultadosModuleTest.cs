@@ -43,11 +43,12 @@ namespace OperacionesAPIUnitTest
             /*Caso Ok*/
             var result = client.GetAsync(route).Result;
             Assert.Equal(HttpStatusCode.OK,result.StatusCode);
-            /*Caso NotFound*/
+
+           /*Caso NotFound*/
             result = client.GetAsync(route2).Result;
             Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
 
-            /*Caso */
+            /*Caso Ruta erronea */
             result = client.GetAsync(route3).Result;
             Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
         }

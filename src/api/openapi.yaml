@@ -7,18 +7,38 @@ info:
   contact:
     name: Cristian Torres
     email: ctorres@andreani.com
-
-tags:
-  - name: Operaciones
-    description: operaciones.
-  - name: Resultados
-    description: resultado.
 paths:
+  /info:
+    get:
+        tags:
+          - Info
+        summary: Obtiene informacion de la aplicacion.
+        description: Permite obtener informacion de la aplicacion.
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                 $ref: '#/components/schemas/Info'
+  /health:
+    get:
+        tags:
+          - Health
+        summary: Obtiene informacion de la salud. 
+        description: Permiter obtener informacion sobre la salud de la aplicacion y sus componentes internos.
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                 $ref: '#/components/schemas/HealthCheck'  
   /resultados/{id}:
     get:
       tags:
         - resultados
-      summary: crea una operacion
+      summary: obtiene un resultado
       description: Permite obtener el resultado de una operacion.
       parameters:
           - in: path
@@ -52,19 +72,51 @@ paths:
       responses:
         202:
           description: Accepted
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  link:
-                    type: string
-                    description: "La operacion  ha sido dado de alta"
+          headers:
+           Location:
+            description: link que obtiene el resultado de la operacion
+            schema:
+              type: string
         422:
           description: UnprocessableEntity
- 
 components:
   schemas:
+    Info:
+      type: object
+      properties:
+        details:
+          type: object
+          properties:
+            applicationName:
+              type: string
+            version:
+              type: string
+            location:
+              type: string
+            runtimeVersion:
+              type: string
+            frameworkDescription:
+                type: string
+            oSDescription:
+                type: string    
+    HealthCheck:
+      type: object
+      properties:
+        status:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+                - DOWN
+                - UP
+                - UNKNOWN
+                - OUT_OF_SERVICE
+            description:
+              type: string
+        details:
+          type: object
+          additionalProperties: true  
     Resultado:
       type: object
       properties:
@@ -81,5 +133,6 @@ components:
           type: number
         type:
           type: string
+
    
 

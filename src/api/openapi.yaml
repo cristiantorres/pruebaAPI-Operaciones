@@ -37,7 +37,7 @@ paths:
   /resultados/{id}:
     get:
       tags:
-        - resultados
+        - Resultados
       summary: obtiene un resultado
       description: Permite obtener el resultado de una operacion.
       parameters:
@@ -60,7 +60,7 @@ paths:
   /operaciones:
     post:
       tags:
-        - operaciones
+        - Operaciones
       summary: crea una operacion
       description: Permite crear una operacion.
 

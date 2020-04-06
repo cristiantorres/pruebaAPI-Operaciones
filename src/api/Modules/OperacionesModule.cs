@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using OperacionesApi.Managements;
 using OperacionesApi.Model;
 using OperacionesApi.Modules.Validators;
+using Prometheus;
 using System;
 
 namespace OperacionesApi.Modules
@@ -23,8 +24,9 @@ namespace OperacionesApi.Modules
         private readonly ILogger<OperacionesModule> _logger;
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private readonly IPedidoAsignadoManagement _management;
-        
-        //private readonly IEventBus _eventBus;
+
+        private Counter counterOperaciones = Metrics.CreateCounter("my_counterCallOperaciones", "Metrica - contador Modulo Operaciones");
+
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
         #endregion
 
@@ -32,11 +34,11 @@ namespace OperacionesApi.Modules
         {
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
-            //_eventBus=eventBus;
             _management = management;
-        #region endpoints
-        Post("/", async (req, res) =>
+             #region endpoints
+            Post("/", async (req, res) =>
             {
+                counterOperaciones.Inc(); // Incremento el contador de llamadas al modulo Operaciones
                 var request = this.BindAndValidate<Operacion>();
                 if (!ModelValidationResult.IsValid)
                 {
@@ -45,21 +47,7 @@ namespace OperacionesApi.Modules
                      detail: "Verificar Errors para mas detalle");
                 }
 
- 
-                ////if (!ModelValidationResult.IsValid)
-                //{
-                //    return await Negotiate.WithStatusCode(HttpStatusCode.RequestEntityTooLarge);
-                //}
-                /*Validacion de los datos recibidos del cliente web*/
-                //    if (!result.ValidationResult.IsValid)
-                //    {
-                //        return await res.as (result.ValidationResult,
-                //                title: "Errores de validacion",
-                //                      detail: "Verificar Errors para mas detalle");
-
-                //}
-
-                /*nombre del servidor*/
+                 /*nombre del servidor*/
                 string _server = Environment.MachineName.ToLower();
                 string urlRespuestaOperacion = $"http://{_server}/resultados/";
                 //Id generado para la operacion y la respuesta

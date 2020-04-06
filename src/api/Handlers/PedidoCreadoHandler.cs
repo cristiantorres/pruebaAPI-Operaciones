@@ -2,6 +2,7 @@
 using Infra.Data;
 using Infra.EventBus;
 using Microsoft.Extensions.Logging;
+using OperacionesApi.Configuration;
 using OperacionesApi.Model;
 using Prometheus;
 using System;
@@ -18,17 +19,19 @@ namespace OperacionesApi.Handlers
         private readonly ILogger<PedidoCreadoHandler> _logger;
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
-        private Counter counterResultados = Metrics.CreateCounter("my_counterResultadoCalculado", "Metrica - contador de recepcion de evento Pedido creado(resultado calculado)");
-
-        public PedidoCreadoHandler(ILogger<PedidoCreadoHandler> logger, IDataAccessRegistry dataAccessRegistry)
+        // private Counter counterResultados = Metrics.CreateCounter("my_counterResultadoCalculado", "Metrica - contador de recepcion de evento Pedido creado(resultado calculado)");
+        private readonly MetricsManager _managerMetrics;
+        public PedidoCreadoHandler(ILogger<PedidoCreadoHandler> logger, IDataAccessRegistry dataAccessRegistry, MetricsManager managerMetric)
         {
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
+            _managerMetrics = managerMetric;
         }
         public Task Handle(PedidoCreado @event, IDictionary<string, object> properties)
         {
             //Incremento del contador
-            counterResultados.Inc();
+            //counterResultados.Inc();
+            _managerMetrics.updateMetricResultadosCalculados();
 
             //Leer el resultado de la operacion y luego  guarda en la DB
             Resultado resultado = new Resultado {Id = @event.cuentaCorriente,

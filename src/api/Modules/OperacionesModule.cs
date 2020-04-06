@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Nancy;
 using Nancy.ModelBinding;
 using Newtonsoft.Json;
+using OperacionesApi.Configuration;
 using OperacionesApi.Managements;
 using OperacionesApi.Model;
 using OperacionesApi.Modules.Validators;
@@ -24,22 +25,33 @@ namespace OperacionesApi.Modules
         private readonly ILogger<OperacionesModule> _logger;
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private readonly IPedidoAsignadoManagement _management;
+        private readonly MetricsManager _managerMetrics;
 
-        private Counter counterOperaciones = Metrics.CreateCounter("my_counterCallOperaciones", "Metrica - contador Modulo Operaciones");
+        //private Counter counterOperaciones = Metrics.CreateCounter("my_counter_Call_Operaciones", "Metrica - contador Modulo Operaciones",new CounterConfiguration
+        //{
+        //    LabelNames = new[] {  "method" }
+        //});
 
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
         #endregion
 
-        public OperacionesModule(ILogger<OperacionesModule> logger, IDataAccessRegistry dataAccessRegistry, IPedidoAsignadoManagement management) : base("/operaciones")
+        public OperacionesModule(ILogger<OperacionesModule> logger, IDataAccessRegistry dataAccessRegistry, IPedidoAsignadoManagement management,MetricsManager managerMetric) : base("/operaciones")
         {
+           
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
             _management = management;
+            _managerMetrics = managerMetric;
              #region endpoints
             Post("/", async (req, res) =>
             {
-                counterOperaciones.Inc(); // Incremento el contador de llamadas al modulo Operaciones
+                  
+                //var statusCode = 200;
+                // Incremento el contador de llamadas al modulo Operaciones
+                _managerMetrics.updateMetricModuloOperaciones("POST");
+                //counterOperaciones.Labels("POST").Inc();
                 var request = this.BindAndValidate<Operacion>();
+                
                 if (!ModelValidationResult.IsValid)
                 {
                     return new ProblemResponse(ModelValidationResult,
@@ -56,21 +68,6 @@ namespace OperacionesApi.Modules
 
                 /*Se realiza el insert en la DB de la operacion creada*/
                 DataAccess.Insert(request);
-
-                /*Publicacion del evento PedidoAsignado*/
-                //var evento = new ConstruirEvento<PedidoAsignado>()
-                //                         .DesdeLaApp("OperacionesAPI")
-                //                         .ConDestino("QL.BORRARME.REQ")
-                //                         .Crear();
-
-                //evento.cuentaCorriente = model.Id;
-                //evento.codigoDeContratoInterno = model.FirstValue.ToString();
-                //evento.cicloDelPedido = model.Type;
-                //evento.estadoDelPedido = model.SecondValue.ToString();
-                //evento.numeroDePedido = string.Empty;
-                //evento.cuando = string.Empty;
-                //_eventBus.Publish(evento);      
-                 
                 _management.publicar(request.FirstValue.ToString(), request.SecondValue.ToString(),request.Id);
                 _logger.LogInformation("operacion registrada...");
                 return await Negotiate

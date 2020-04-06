@@ -16,7 +16,6 @@ namespace OperacionesApi.Modules
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
         #endregion
-
         public ResultadosModule(ILogger<ResultadosModule> logger, IDataAccessRegistry dataAccessRegistry) : base("/resultados")
         {
             _logger = logger;

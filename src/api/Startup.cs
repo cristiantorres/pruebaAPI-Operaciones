@@ -1,5 +1,5 @@
 using Andreani.Integracion.Eventos.Almacenes;
-using Infra.Data.DependencyInjection;
+
 using Infra.EventBus.IbmMQ.DependencyInjection;
 using Infra.HealthCheck.Core.Health;
 using Infra.HealthCheck.IbmMQ;
@@ -13,7 +13,6 @@ using OperacionesApi.Handlers;
 using OperacionesApi.Managements;
 using Prometheus;
 using System;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 [assembly: HostingStartup(typeof(OperacionesApi.Startup))]
 
@@ -26,7 +25,6 @@ namespace OperacionesApi
         {
            builder.ConfigureServices((ctx, c) =>
            {
-              
                c.AddDataAccessRegistry();
                c.AddSingleton<IHealthIndicator, IbmQueueManagerHealthIndicator>(s => new IbmQueueManagerHealthIndicator("GA02.AR.T.QM", "192.6.6.39(1416)", "ITG.TO.GA02.TEST"));
                c.AddSingleton<IPedidoAsignadoManagement, PedidoAsignadoManagement>();
@@ -34,6 +32,8 @@ namespace OperacionesApi
                    .Subscribe<PedidoCreado, PedidoCreadoHandler>();
                c.AddMetrics();
                c.AddSingleton<MetricsManager>();
+               //c.AddCors();
+               //c.AddTransient<IStartupFilter, StartupFilter>();
 
            });
 

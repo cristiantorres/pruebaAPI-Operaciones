@@ -32,7 +32,7 @@ namespace XUnitTestProject1
         
         public void PostOperaciones()
         {
-            var client = _platformFixture.CreateClient();
+            var client = _platformFixture.Client;
             var myContent = JsonConvert.SerializeObject(new { firstValue = 23, secondValue = 20, type = "suma" });
             var myContent2 = JsonConvert.SerializeObject(new { firstValue = 23, secondValue = 20, type = "resta" });
 

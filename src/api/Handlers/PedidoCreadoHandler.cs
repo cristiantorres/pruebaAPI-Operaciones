@@ -30,7 +30,6 @@ namespace OperacionesApi.Handlers
         public Task Handle(PedidoCreado @event, IDictionary<string, object> properties)
         {
             //Incremento del contador
-            //counterResultados.Inc();
             _managerMetrics.updateMetricResultadosCalculados();
 
             //Leer el resultado de la operacion y luego  guarda en la DB

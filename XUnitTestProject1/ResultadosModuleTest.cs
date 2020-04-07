@@ -37,7 +37,7 @@ namespace OperacionesAPIUnitTest
             var route = $"/resultados/{idValido}";
             var route2 = $"/resultados/{idNoValido}";
             var route3 = $"/resultados/";
-            var client = _platformFixture.CreateClient();
+            var client = _platformFixture.Client;
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             
             /*Caso Ok*/

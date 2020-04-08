@@ -17,6 +17,12 @@ namespace OperacionesApi.Managements
             _eventBus = eventBus;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="operando1"></param>
+        /// <param name="operando2"></param>
+        /// <param name="idOperacion"></param>
         public void publicar(string operando1,string operando2,string idOperacion)
         {
             var pedidoAsignado = new ConstruirEvento<PedidoAsignado>()

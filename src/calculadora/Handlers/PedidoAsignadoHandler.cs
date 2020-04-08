@@ -12,10 +12,11 @@ namespace Calculadora.Handlers
 {
     public class PedidoAsignadoHandler: IIntegrationEventHandler<PedidoAsignado>
     {
+        #region variables
         private readonly ILogger<PedidoAsignadoHandler> _logger;
         private readonly IPedidoCreadoManagement _management;
-        //private readonly IEventBus _eventBus;
-        public  PedidoAsignadoHandler(ILogger<PedidoAsignadoHandler> logger, IPedidoCreadoManagement management)
+        #endregion
+        public PedidoAsignadoHandler(ILogger<PedidoAsignadoHandler> logger, IPedidoCreadoManagement management)
         {
             _logger = logger;
             _management = management;

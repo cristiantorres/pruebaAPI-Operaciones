@@ -34,7 +34,7 @@ namespace OperacionesApi.Modules
                     var resultado = DataAccess.Get<Resultado>(idResultado);
                     if (resultado == null)
                     {   
-                      res.StatusCode = 404;
+                      res.StatusCode = HttpStatusCode.NotFound.GetHashCode(); ;
                       await res.AsJson(new {mensaje = "Resultado no encontrado" });
                       return; 
                     }

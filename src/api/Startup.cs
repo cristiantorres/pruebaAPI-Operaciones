@@ -31,14 +31,7 @@ namespace OperacionesApi
                c.AddIbmMQEventBus(ctx.Configuration)
                    .Subscribe<PedidoCreado, PedidoCreadoHandler>();
                c.AddMetrics();
-               //c.AddSingleton<MetricsManager>();
-               //c.AddCors();
-               //c.AddTransient<IStartupFilter, StartupFilter>();
-
            });
-
- 
         }
-
     }
 }

@@ -24,26 +24,20 @@ namespace OperacionesApi.Modules
     public class OperacionesModule : CarterModule
     {
         #region variables
-        
         private readonly ILogger<OperacionesModule> _logger;
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private readonly IPedidoAsignadoManagement _management;
-        //private readonly MetricsManager _managerMetrics;
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
         #endregion
 
-        public OperacionesModule(ILogger<OperacionesModule> logger, IDataAccessRegistry dataAccessRegistry, IPedidoAsignadoManagement management, MetricsManager managerMetric) : base("/api/operaciones")
+        public OperacionesModule(ILogger<OperacionesModule> logger, IDataAccessRegistry dataAccessRegistry, IPedidoAsignadoManagement management) : base("/api/operaciones")
         {
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
             _management = management;
-            //_managerMetrics = managerMetric;
-
-            #region endpoints
+             #region endpoints
              Post("/", async (req, res) =>
             {
-                //Incremento el contador de llamadas al modulo Operaciones
-                //_managerMetrics.updateMetricModuloOperaciones("POST");
                 var result = await req.BindAndValidate<Operacion>();
                 
                 if (!result.ValidationResult.IsValid)
@@ -54,8 +48,8 @@ namespace OperacionesApi.Modules
                            detail: "Verificar Errors para mas detalle");
                     return;
                 }
-                string _urlRespuestaOperacion = "/resultados/";
-                //Id generado para la operacion y la respuesta
+                string _urlRespuestaOperacion = "/api/resultados/";
+                /*Id generado para la operacion y la respuesta*/
                 var _idRespuesta = Guid.NewGuid().ToString().Substring(0, 5);
                 result.Data.Id = _idRespuesta;
                 /*Se realiza el insert en la DB de la operacion creada*/
@@ -66,20 +60,15 @@ namespace OperacionesApi.Modules
                 res.StatusCode = 202;
                 res.Headers["Location"] = $"{_urlRespuestaOperacion}{_idRespuesta}";
                 await res.WriteAsync("operacion agregada"); 
-    
-                //.WithHeader("link respuesta", $"{urlRespuestaOperacion}{idRespuesta}")
-                       //.WithStatusCode(HttpStatusCode.OK);
             });
-            // Get("/", async (req, res) => await res.WriteAsync("mostarndo lista de operaciones"));
             #endregion
 
-            this.After = async (ctx) =>
+            After = async (ctx) =>
             {
                 MetricsManager.updateMetricModuloOperaciones(ctx.Request.Method,ctx.Response.StatusCode.ToString());
                 await ctx.Response.WriteAsync("   -- fin con statusCode: "+ctx.Response.StatusCode);
                 return;
             };
-         
 
         }
     }

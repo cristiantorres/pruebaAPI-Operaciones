@@ -24,32 +24,56 @@ namespace OperacionesAPIUnitTest
             _platformFixture = platformFixture;
         }
         /// <summary>
-        /// Test unitario metodo Get del Modulo Resultados
+        /// En este caso, este Test unitario solo comprueba si el tipo de valor devuelto es NotFound.
         /// </summary>
         [Fact]
-        public void GetResultadosAsync()
+        public void GetResultadosAsyncNotfound()
         {
-            string idValido = "e19c3";
+ 
             string idNoValido = "e100c3";
-            var baseAdrees =  "http://localhost:5000/api" ;
-            var route = $"/resultados/{idValido}";
-            var route2 = $"/resultados/{idNoValido}";
-            var route3 = $"/resultados/";
+            var route = $"api/resultados/{idNoValido}";
             var client = _platformFixture.Client;
-            //client.BaseAddress = baseUri;
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            
-            /*Caso Ok*/
-            var result = client.GetAsync($"{baseAdrees}{route}").Result;
-            Assert.Equal(HttpStatusCode.OK,result.StatusCode);
 
            /*Caso NotFound*/
-            result = client.GetAsync($"{baseAdrees}{route2}").Result;
+            var  result = client.GetAsync(route).Result;
             Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+        }
+
+        /// <summary>
+        /// En este caso, este Test unitario solo comprueba si el tipo de valor devuelto es OK
+        /// </summary>
+        [Fact]
+        public void GetResultadosAsyncOk()
+        {
+            string idValido = "e19c3"; 
+            var route = $"api/resultados/{idValido}";
+            var client = _platformFixture.Client;
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            /*Caso Ok*/
+            var result = client.GetAsync(route).Result;
+            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.NotNull(result.Content);
+          //  Assert.Equal(42, contentResult.Content.Id);
+
+        }
+
+        /// <summary>
+        /// Test unitario metodo Get del Modulo Resultados para el caso  de un path erroneo
+        /// </summary>
+        [Fact]
+        public void GetResultadosAsyncPathErroneo()
+        {
+ 
+             var route = $"api/resultados/";
+            var client = _platformFixture.Client;
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             /*Caso Ruta erronea */
-            result = client.GetAsync($"{baseAdrees}{route3}").Result;
+            var result = client.GetAsync(route).Result;
             Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+
         }
     }
 }

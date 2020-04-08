@@ -14,20 +14,31 @@ namespace OperacionesApi.Handlers
 {
      public class PedidoCreadoHandler : IIntegrationEventHandler<PedidoCreado>
     {
+        #region variables
         private readonly ILogger<PedidoCreadoHandler> _logger;
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
-        private readonly MetricsManager _managerMetrics;
-        public PedidoCreadoHandler(ILogger<PedidoCreadoHandler> logger, IDataAccessRegistry dataAccessRegistry, MetricsManager managerMetric)
+        #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="dataAccessRegistry"></param>
+        public PedidoCreadoHandler(ILogger<PedidoCreadoHandler> logger, IDataAccessRegistry dataAccessRegistry)
         {
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
-            _managerMetrics = managerMetric;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="event"></param>
+        /// <param name="properties"></param>
+        /// <returns></returns>
         public Task Handle(PedidoCreado @event, IDictionary<string, object> properties)
         {
             //Incremento del contador
-            _managerMetrics.updateMetricResultadosCalculados();
+            MetricsManager.updateMetricResultadosCalculados();
             //Leer el resultado de la operacion y luego  guarda en la DB
             Resultado resultado = new Resultado {Id = @event.cuentaCorriente,
                                                  Result= Convert.ToInt32(@event.numeroDePedido)
@@ -37,6 +48,12 @@ namespace OperacionesApi.Handlers
             return Task.FromResult(0);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="event"></param>
+        /// <param name="exception"></param>
+        /// <returns></returns>
         public Task<bool> HandleError(string @event, Exception exception)
         {
             _logger.LogError($"Error al procesar {@event} : {exception.Message}");

@@ -20,14 +20,15 @@
 
   <ItemGroup>
     <PackageReference Include="Carter" Version="5.1.0" />
-    <PackageReference Include="Carter.SirenNegotiator" Version="1.0.4" />
-    <PackageReference Include="FluentValidation" Version="8.6.2" />
+    <PackageReference Include="FluentValidation" Version="9.0.0-preview3" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.0.0-preview3" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.0.0-preview3" />
     <PackageReference Include="Infra.Data" Version="3.1.0-alpha1" />
     <PackageReference Include="Infra.EventBus.IbmMQ" Version="3.1.0-alpha1" />
     <PackageReference Include="Infra.EventBus.IbmMQ.UI" Version="3.1.0-alpha1" />
     <PackageReference Include="Infra.HealthCheck" Version="2.1.2" />
     <PackageReference Include="Infra.HealthCheck.IbmMQ" Version="2.1.1" />
-    <PackageReference Include="Infra.Metrics" Version="1.1.0" />
+    <PackageReference Include="Infra.Metrics" Version="3.1.0-alpha1" />
     <PackageReference Include="Infra.Web.Problems" Version="3.1.0-alpha1" />
     <PackageReference Include="Infra.WebHost" Version="3.1.0-alpha1" />
     <PackageReference Include="prometheus-net.AspNetCore" Version="3.5.0" />

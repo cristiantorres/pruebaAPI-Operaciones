@@ -1,21 +1,23 @@
-﻿using Andreani.Integracion.Esquemas.Eventos;
-using Andreani.Integracion.Eventos.Almacenes;
+﻿ 
 using Carter;
-using FluentValidation.Results;
+ 
 using Infra.Data;
 using Infra.EventBus;
 using Infra.Web.Problems;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Nancy;
-using Nancy.ModelBinding;
-using Newtonsoft.Json;
+
+using Carter.ModelBinding;
+using Carter.Request;
+using Carter.Response;
+//using Nancy.ModelBinding;
+ 
 using OperacionesApi.Configuration;
 using OperacionesApi.Managements;
 using OperacionesApi.Model;
-using OperacionesApi.Modules.Validators;
-using Prometheus;
+using Microsoft.AspNetCore.Routing;
 using System;
+
 
 namespace OperacionesApi.Modules
 {
@@ -27,16 +29,12 @@ namespace OperacionesApi.Modules
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private readonly IPedidoAsignadoManagement _management;
         private readonly MetricsManager _managerMetrics;
-
-        //private Counter counterOperaciones = Metrics.CreateCounter("my_counter_Call_Operaciones", "Metrica - contador Modulo Operaciones",new CounterConfiguration
-        //{
-        //    LabelNames = new[] {  "method" }
-        //});
+ 
 
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
         #endregion
 
-        public OperacionesModule(ILogger<OperacionesModule> logger, IDataAccessRegistry dataAccessRegistry, IPedidoAsignadoManagement management,MetricsManager managerMetric) : base("/api/operaciones")
+        public OperacionesModule(ILogger<OperacionesModule> logger, IDataAccessRegistry dataAccessRegistry, IPedidoAsignadoManagement management, MetricsManager managerMetric) : base("/api/operaciones")
         {
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
@@ -77,36 +75,38 @@ namespace OperacionesApi.Modules
             //    //       .WithStatusCode(HttpStatusCode.OK);
             //});
 
-            Post("/", async (req, res) => {
-
-                var result = await req.BindAndValidate<Operacion>();
-                //    // Incremento el contador de llamadas al modulo Operaciones
+            Post("/", async (req, res) =>
+            {
+                //Incremento el contador de llamadas al modulo Operaciones
                 _managerMetrics.updateMetricModuloOperaciones("POST");
-                //    //counterOperaciones.Labels("POST").Inc();
-       
-                ////    if (!ModelValidationResult.IsValid)
-                ////    {
-                ////        return new res.AsProblem(result.ValidationResult,
-                //// title: "Errores de validacion",
-                ////detail: "Verificar Errors para mas detalle");
-                ////    }
+                var result = await req.BindAndValidate<Operacion>();
+                
+                if (!result.ValidationResult.IsValid)
+                {
+                    await 
+                    res.AsProblem(result.ValidationResult,
+                           title: "Errores de validacion",
+                           detail: "Verificar Errors para mas detalle");
+                    return;
+                }
+                string _urlRespuestaOperacion = "/resultados/";
+                //Id generado para la operacion y la respuesta
+                var _idRespuesta = Guid.NewGuid().ToString().Substring(0, 5);
+                result.Data.Id = _idRespuesta;
+                /*Se realiza el insert en la DB de la operacion creada*/
+                DataAccess.Insert(result.Data);
+                _management.publicar(result.Data.ToString(), result.Data.SecondValue.ToString(), result.Data.Id);
 
-                //     /*nombre del servidor*/
-                //    string _server = Environment.MachineName.ToLower();
-                //    string urlRespuestaOperacion = $"http://{_server}/resultados/";
-                //    //Id generado para la operacion y la respuesta
-                //    var idRespuesta = Guid.NewGuid().ToString().Substring(0, 5);
-                //    request.Id = idRespuesta;
-
-                //    /*Se realiza el insert en la DB de la operacion creada*/
-                      DataAccess.Insert(request);
-                      _management.publicar(request.FirstValue.ToString(), request.SecondValue.ToString(),request.Id);
-                //    _logger.LogInformation("operacion registrada...");
-                //    //return await Negotiate
-                //    //       .WithHeader("link respuesta", $"{urlRespuestaOperacion}{idRespuesta}")
-                //    //       .WithStatusCode(HttpStatusCode.OK);
-                //});
+                _logger.LogInformation("operacion registrada...");
+                res.StatusCode = 202;
+                res.Headers["Location"] = $"{_urlRespuestaOperacion}{_idRespuesta}";
+                await res.WriteAsync("operacion agregada"); 
+    
+                //.WithHeader("link respuesta", $"{urlRespuestaOperacion}{idRespuesta}")
+                       //.WithStatusCode(HttpStatusCode.OK);
             });
+
+
             #endregion
 
         }

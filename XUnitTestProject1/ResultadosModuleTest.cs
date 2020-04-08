@@ -29,8 +29,6 @@ namespace OperacionesAPIUnitTest
         [Fact]
         public void GetResultadosAsync()
         {
-            //TO DO
-            //realizar un Post de operaciones y luego probar este metodo con la url que llega en el response
             string idValido = "e19c3";
             string idNoValido = "e100c3";
             var baseUri = new Uri("http://localhost:5000/");

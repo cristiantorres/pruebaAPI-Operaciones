@@ -12,14 +12,11 @@ using System.Threading.Tasks;
 
 namespace OperacionesApi.Handlers
 {
-    
-    //Modificar nombre de la clase  PedidoCreadoHandler
-    public class PedidoCreadoHandler : IIntegrationEventHandler<PedidoCreado>
+     public class PedidoCreadoHandler : IIntegrationEventHandler<PedidoCreado>
     {
         private readonly ILogger<PedidoCreadoHandler> _logger;
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
-        // private Counter counterResultados = Metrics.CreateCounter("my_counterResultadoCalculado", "Metrica - contador de recepcion de evento Pedido creado(resultado calculado)");
         private readonly MetricsManager _managerMetrics;
         public PedidoCreadoHandler(ILogger<PedidoCreadoHandler> logger, IDataAccessRegistry dataAccessRegistry, MetricsManager managerMetric)
         {
@@ -31,7 +28,6 @@ namespace OperacionesApi.Handlers
         {
             //Incremento del contador
             _managerMetrics.updateMetricResultadosCalculados();
-
             //Leer el resultado de la operacion y luego  guarda en la DB
             Resultado resultado = new Resultado {Id = @event.cuentaCorriente,
                                                  Result= Convert.ToInt32(@event.numeroDePedido)

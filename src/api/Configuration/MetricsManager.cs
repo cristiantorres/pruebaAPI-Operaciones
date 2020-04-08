@@ -8,18 +8,18 @@ namespace OperacionesApi.Configuration
 {
     public class MetricsManager
     {
-        private Counter counterModuloOperaciones = Metrics.CreateCounter("my_counter_Call_Operaciones", "Metrica - contador Modulo Operaciones", new CounterConfiguration
+        private static Counter counterModuloOperaciones = Metrics.CreateCounter("my_counter_Call_Operaciones", "Metrica - contador Modulo Operaciones", new CounterConfiguration
         {
             LabelNames = new[] { "method","statusCode" }
         });
-        private Counter counterResultadosCalculados = Metrics.CreateCounter("my_counter_ResultadoCalculado", "Metrica - contador de recepcion de evento Pedido creado(resultado calculado)");
+        private static Counter counterResultadosCalculados = Metrics.CreateCounter("my_counter_ResultadoCalculado", "Metrica - contador de recepcion de evento Pedido creado(resultado calculado)");
 
         /// <summary>
         /// Metodo que actualiza el contador para medir las llamadas al   Modulo Operaciones
         /// </summary>
         /// <param name="method"></param>
         /// <param name="statusCode"></param>
-        public void updateMetricModuloOperaciones(string method, string statusCode)
+        public static void updateMetricModuloOperaciones(string method, string statusCode)
         {
             counterModuloOperaciones.Labels(method,statusCode).Inc();
         }

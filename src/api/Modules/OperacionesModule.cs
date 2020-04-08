@@ -28,9 +28,7 @@ namespace OperacionesApi.Modules
         private readonly ILogger<OperacionesModule> _logger;
         private readonly IDataAccessRegistry _dataAccessRegistry;
         private readonly IPedidoAsignadoManagement _management;
-        private readonly MetricsManager _managerMetrics;
- 
-
+        //private readonly MetricsManager _managerMetrics;
         private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
         #endregion
 
@@ -39,10 +37,9 @@ namespace OperacionesApi.Modules
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
             _management = management;
-            _managerMetrics = managerMetric;
+            //_managerMetrics = managerMetric;
 
             #region endpoints
-
              Post("/", async (req, res) =>
             {
                 //Incremento el contador de llamadas al modulo Operaciones
@@ -74,15 +71,15 @@ namespace OperacionesApi.Modules
                        //.WithStatusCode(HttpStatusCode.OK);
             });
             // Get("/", async (req, res) => await res.WriteAsync("mostarndo lista de operaciones"));
-
+            #endregion
 
             this.After = async (ctx) =>
             {
-                _managerMetrics.updateMetricModuloOperaciones(ctx.Request.Method,ctx.Response.StatusCode.ToString());
+                MetricsManager.updateMetricModuloOperaciones(ctx.Request.Method,ctx.Response.StatusCode.ToString());
                 await ctx.Response.WriteAsync("   -- fin con statusCode: "+ctx.Response.StatusCode);
                 return;
             };
-            #endregion
+         
 
         }
     }

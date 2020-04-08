@@ -29,7 +29,7 @@ namespace XUnitTestProject1
         /// <summary>
         /// Test unitario metodo Post del Modulo Operaciones
         /// </summary>
-      //  [Fact]
+       [Fact]
         public void PostOperaciones()
         {
             var client = _platformFixture.Client;

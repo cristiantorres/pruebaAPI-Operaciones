@@ -10,7 +10,7 @@ namespace OperacionesApi.Configuration
     {
         private Counter counterModuloOperaciones = Metrics.CreateCounter("my_counter_Call_Operaciones", "Metrica - contador Modulo Operaciones", new CounterConfiguration
         {
-            LabelNames = new[] { "method" }
+            LabelNames = new[] { "method","statusCode" }
         });
         private Counter counterResultadosCalculados = Metrics.CreateCounter("my_counter_ResultadoCalculado", "Metrica - contador de recepcion de evento Pedido creado(resultado calculado)");
 
@@ -19,9 +19,9 @@ namespace OperacionesApi.Configuration
         /// </summary>
         /// <param name="method"></param>
         /// <param name="statusCode"></param>
-        public void updateMetricModuloOperaciones(string method)
+        public void updateMetricModuloOperaciones(string method, string statusCode)
         {
-            counterModuloOperaciones.Labels(method).Inc();
+            counterModuloOperaciones.Labels(method,statusCode).Inc();
         }
         /// <summary>
         /// Metodo que actualiza el contador de la metrica  para medir

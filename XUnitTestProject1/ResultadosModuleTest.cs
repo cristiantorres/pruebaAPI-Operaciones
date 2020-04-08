@@ -31,23 +31,24 @@ namespace OperacionesAPIUnitTest
         {
             string idValido = "e19c3";
             string idNoValido = "e100c3";
-            var baseUri = new Uri("http://localhost:5000/");
+            var baseAdrees =  "http://localhost:5000/api" ;
             var route = $"/resultados/{idValido}";
             var route2 = $"/resultados/{idNoValido}";
             var route3 = $"/resultados/";
             var client = _platformFixture.Client;
+            //client.BaseAddress = baseUri;
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             
             /*Caso Ok*/
-            var result = client.GetAsync(route).Result;
+            var result = client.GetAsync($"{baseAdrees}{route}").Result;
             Assert.Equal(HttpStatusCode.OK,result.StatusCode);
 
            /*Caso NotFound*/
-            result = client.GetAsync(route2).Result;
+            result = client.GetAsync($"{baseAdrees}{route2}").Result;
             Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
 
             /*Caso Ruta erronea */
-            result = client.GetAsync(route3).Result;
+            result = client.GetAsync($"{baseAdrees}{route3}").Result;
             Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
         }
     }

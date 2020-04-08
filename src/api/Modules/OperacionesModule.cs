@@ -46,7 +46,7 @@ namespace OperacionesApi.Modules
              Post("/", async (req, res) =>
             {
                 //Incremento el contador de llamadas al modulo Operaciones
-                _managerMetrics.updateMetricModuloOperaciones("POST");
+                //_managerMetrics.updateMetricModuloOperaciones("POST");
                 var result = await req.BindAndValidate<Operacion>();
                 
                 if (!result.ValidationResult.IsValid)
@@ -73,8 +73,15 @@ namespace OperacionesApi.Modules
                 //.WithHeader("link respuesta", $"{urlRespuestaOperacion}{idRespuesta}")
                        //.WithStatusCode(HttpStatusCode.OK);
             });
+            // Get("/", async (req, res) => await res.WriteAsync("mostarndo lista de operaciones"));
 
 
+            this.After = async (ctx) =>
+            {
+                _managerMetrics.updateMetricModuloOperaciones(ctx.Request.Method,ctx.Response.StatusCode.ToString());
+                await ctx.Response.WriteAsync("   -- fin con statusCode: "+ctx.Response.StatusCode);
+                return;
+            };
             #endregion
 
         }

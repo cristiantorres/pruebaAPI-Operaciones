@@ -35,32 +35,41 @@ namespace OperacionesApi.Modules
             _logger = logger;
             _dataAccessRegistry = dataAccessRegistry;
             _management = management;
-             #region endpoints
-             Post("/", async (req, res) =>
-            {
-                var result = await req.BindAndValidate<Operacion>();
-                
-                if (!result.ValidationResult.IsValid)
-                {
-                    await 
-                    res.AsProblem(result.ValidationResult,
-                           title: "Errores de validacion",
-                           detail: "Verificar Errors para mas detalle");
-                    return;
-                }
-                string _urlRespuestaOperacion = "/api/resultados/";
-                /*Id generado para la operacion y la respuesta*/
-                var _idRespuesta = Guid.NewGuid().ToString().Substring(0, 5);
-                result.Data.Id = _idRespuesta;
-                /*Se realiza el insert en la DB de la operacion creada*/
-                DataAccess.Insert(result.Data);
-                _management.publicar(result.Data);
+            #region endpoints
+            Post("/", async (req, res) =>
+           {
+               try
+               {
+                   var result = await req.BindAndValidate<Operacion>();
+                   throw new Exception("error forzado...");
+                   if (!result.ValidationResult.IsValid)
+                   {
+                       await
+                        res.AsProblem(result.ValidationResult,
+                               title: "Errores de validacion",
+                               detail: "Verificar Errors para mas detalle");
+                       return;
+                   }
+                   string _urlRespuestaOperacion = "/api/resultados/";
+                   /*Id generado para la operacion y la respuesta*/
+                   var _idRespuesta = Guid.NewGuid().ToString().Substring(0, 5);
+                   result.Data.Id = _idRespuesta;
+                   /*Se realiza el insert en la DB de la operacion creada*/
+                   DataAccess.Insert(result.Data);
+                   _management.publicar(result.Data);
 
-                _logger.LogInformation("operacion registrada...");
-                res.StatusCode = 202;
-                res.Headers["Location"] = $"{_urlRespuestaOperacion}{_idRespuesta}";
-                await res.WriteAsync("operacion agregada"); 
-            });
+                   _logger.LogInformation("operacion registrada...");
+                   res.StatusCode = 202;
+                   res.Headers["Location"] = $"{_urlRespuestaOperacion}{_idRespuesta}";
+                   await res.WriteAsync("operacion agregada");
+               }
+               catch(Exception exception)
+               {
+                   res.StatusCode = 500;
+                  _logger.LogError($"Falla en:{req.Method} - OperacionesModule :{exception.Message}"  );
+               }
+           });
+            
             #endregion
 
             After = async (ctx) =>

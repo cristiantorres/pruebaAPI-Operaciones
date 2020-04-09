@@ -1,6 +1,7 @@
 ﻿using Andreani.Integracion.Esquemas.Eventos;
 using Andreani.Integracion.Eventos.Almacenes;
 using Infra.EventBus;
+using OperacionesApi.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,8 @@ namespace OperacionesApi.Managements
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="operando1"></param>
-        /// <param name="operando2"></param>
-        /// <param name="idOperacion"></param>
-        public void publicar(string operando1,string operando2,string idOperacion)
+      //  public void publicar(string operando1,string operando2,string idOperacion)
+       public void publicar(Operacion operacionAPublicar)
         {
             var pedidoAsignado = new ConstruirEvento<PedidoAsignado>()
                          .DesdeLaApp("OPERACIONES-API")
@@ -31,10 +30,10 @@ namespace OperacionesApi.Managements
                          .Crear();
             /*Datos del evento a publicar */
             pedidoAsignado.numeroDePedido = string.Empty;
-            pedidoAsignado.cuentaCorriente = idOperacion;
+            pedidoAsignado.cuentaCorriente = operacionAPublicar.Id;
             pedidoAsignado.cicloDelPedido = "sumar";
-            pedidoAsignado.codigoDeContratoInterno = operando1.ToString();
-            pedidoAsignado.estadoDelPedido = operando2.ToString();
+            pedidoAsignado.codigoDeContratoInterno = operacionAPublicar.FirstValue.ToString();
+            pedidoAsignado.estadoDelPedido = operacionAPublicar.SecondValue.ToString();
             pedidoAsignado.cuando = string.Empty;
             //publicacion del evento
             _eventBus.Publish(pedidoAsignado);

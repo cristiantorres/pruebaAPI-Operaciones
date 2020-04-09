@@ -54,7 +54,7 @@ namespace OperacionesApi.Modules
                 result.Data.Id = _idRespuesta;
                 /*Se realiza el insert en la DB de la operacion creada*/
                 DataAccess.Insert(result.Data);
-                _management.publicar(result.Data.ToString(), result.Data.SecondValue.ToString(), result.Data.Id);
+                _management.publicar(result.Data);
 
                 _logger.LogInformation("operacion registrada...");
                 res.StatusCode = 202;

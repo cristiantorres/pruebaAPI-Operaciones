@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Logs\" />
+    <Folder Include="Model\Mapping\" />
   </ItemGroup>
 
 </Project>

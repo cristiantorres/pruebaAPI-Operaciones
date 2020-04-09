@@ -19,6 +19,12 @@ namespace Calculadora.Handlers
             _logger = logger;
             _management = management;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="event"></param>
+        /// <param name="properties"></param>
+        /// <returns></returns>
         public Task Handle(PedidoAsignado @event, IDictionary<string, object> properties)
         {
             /*Calculo del resultado a Publicar*/

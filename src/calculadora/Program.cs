@@ -3,35 +3,35 @@ using Infra.WebHost;
 
 namespace OperacionesApi
 {
-  public class Program : IServiceStatus
-  {
-    public ServiceState CurrentState { get; set; }
-
-    public string ServiceName => "PlatformApiService";
-
-    public string ServiceDisplayName => "Platform Api Service";
-
-    public string ServiceDescription => "Platform Api Service";
-
-    public static void Main(string[] args)
+    public class Program : IServiceStatus
     {
-      WebHostWrapper.Run(args, new Program());
-    }
+        public ServiceState CurrentState { get; set; }
 
-    public void AfterStart()
-    {
-    }
+        public string ServiceName => "PlatformApiService";
 
-    public void AfterStop()
-    {
-    }
+        public string ServiceDisplayName => "Platform Api Service";
 
-    public void BeforeStart()
-    {
-    }
+        public string ServiceDescription => "Platform Api Service";
 
-    public void BeforeStop()
-    {
+        public static void Main(string[] args)
+        {
+            WebHostWrapper.Run(args, new Program());
+        }
+
+        public void AfterStart()
+        {
+        }
+
+        public void AfterStop()
+        {
+        }
+
+        public void BeforeStart()
+        {
+        }
+
+        public void BeforeStop()
+        {
+        }
     }
-  }
 }

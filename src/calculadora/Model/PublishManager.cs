@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Calculadora.Model
+﻿namespace Calculadora.Model
 {
     public class PublishManager
     {
         public static void PublicarResultado()
         {
-           // var evento = 
+            // var evento = 
         }
     }
 }

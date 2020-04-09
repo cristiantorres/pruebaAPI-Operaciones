@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace OperacionesApi.Model
+﻿namespace OperacionesApi.Model
 {
     public class Resultado
     {

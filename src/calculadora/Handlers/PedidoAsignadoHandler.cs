@@ -1,16 +1,14 @@
-﻿using Andreani.Integracion.Eventos;
-using Andreani.Integracion.Eventos.Almacenes;
+﻿using Andreani.Integracion.Eventos.Almacenes;
 using Calculadora.Managements;
 using Infra.EventBus;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Calculadora.Handlers
 {
-    public class PedidoAsignadoHandler: IIntegrationEventHandler<PedidoAsignado>
+    public class PedidoAsignadoHandler : IIntegrationEventHandler<PedidoAsignado>
     {
         #region variables
         private readonly ILogger<PedidoAsignadoHandler> _logger;
@@ -25,7 +23,7 @@ namespace Calculadora.Handlers
         {
             /*Calculo del resultado a Publicar*/
             var resultadoOperacion = Convert.ToInt32(@event.codigoDeContratoInterno) + Convert.ToInt32(@event.estadoDelPedido);
-            _management.publicar(@event.cuentaCorriente,resultadoOperacion);
+            _management.publicar(@event.cuentaCorriente, resultadoOperacion);
             _logger.LogInformation($"Se realizo el calculo de la operacion ID: {@event.cuentaCorriente}");
             return Task.FromResult(0);
         }

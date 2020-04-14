@@ -31,7 +31,7 @@ namespace OperacionesApi.Managements
             /*Datos del evento a publicar */
             pedidoAsignado.numeroDePedido = string.Empty;
             pedidoAsignado.cuentaCorriente = operacionAPublicar.Id;
-            pedidoAsignado.cicloDelPedido = "sumar";
+            pedidoAsignado.cicloDelPedido = operacionAPublicar.Type;
             pedidoAsignado.codigoDeContratoInterno = operacionAPublicar.FirstValue.ToString();
             pedidoAsignado.estadoDelPedido = operacionAPublicar.SecondValue.ToString();
             pedidoAsignado.cuando = string.Empty;

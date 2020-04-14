@@ -10,7 +10,6 @@ namespace OperacionesApi.Managements
 {
     public interface IPedidoAsignadoManagement
     {
-        void Guardar(Operacion operacionAPublicar);
-        void Publicar(Operacion operacion);
+          void publicar(Operacion operacion);
     }
 }

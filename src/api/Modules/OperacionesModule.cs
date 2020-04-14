@@ -41,7 +41,6 @@ namespace OperacionesApi.Modules
                try
                {
                    var result = await req.BindAndValidate<Operacion>();
-                   throw new Exception("error forzado...");
                    if (!result.ValidationResult.IsValid)
                    {
                        await

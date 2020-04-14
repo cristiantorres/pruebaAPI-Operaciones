@@ -37,7 +37,7 @@ paths:
   /resultados/{id}:
     get:
       tags:
-        - resultados
+        - Resultados
       summary: obtiene un resultado
       description: Permite obtener el resultado de una operacion.
       parameters:
@@ -60,9 +60,10 @@ paths:
   /operaciones:
     post:
       tags:
-        - operaciones
+        - Operaciones
       summary: crea una operacion
       description: Permite crear una operacion.
+
       requestBody:
         required: true
         content:
@@ -73,10 +74,11 @@ paths:
         202:
           description: Accepted
           headers:
-           Location:
-            description: link que obtiene el resultado de la operacion
-            schema:
-              type: string
+            Location:
+              schema:  
+                type: string
+                format: url
+              description: link que obtiene el resultado de la operacion
         422:
           description: UnprocessableEntity
 components:
@@ -132,6 +134,15 @@ components:
         secondValue:
           type: number
         type:
+          type: string
+          
+    Location:
+      type: object
+      description: The number of requests left for the time window.
+      properties:
+        descripcion:
+          type: string
+        link:
           type: string
 
    

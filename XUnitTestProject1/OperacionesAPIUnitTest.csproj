@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\src\api\appsettings.yml" Link="appsettings.yml" />
+    <None Include="..\src\api\appsettings.yml" Link="appsettings.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Infra.WebHost" Version="2.1.13" />
-    <PackageReference Include="Infra.WebHost.Test" Version="2.1.10" />
+    <PackageReference Include="Infra.WebHost" Version="3.1.0-alpha1" />
+    <PackageReference Include="Infra.WebHost.Test" Version="3.1.0-alpha1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />

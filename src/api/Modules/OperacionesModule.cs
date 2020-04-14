@@ -24,16 +24,13 @@ namespace OperacionesApi.Modules
     public class OperacionesModule : CarterModule
     {
         #region variables
-        private readonly ILogger<OperacionesModule> _logger;
-        private readonly IDataAccessRegistry _dataAccessRegistry;
+        private readonly ILogger<OperacionesModule> _logger; 
         private readonly IPedidoAsignadoManagement _management;
-        private IDataAccess DataAccess => _dataAccessRegistry.GetDataAccess();
         #endregion
 
-        public OperacionesModule(ILogger<OperacionesModule> logger, IDataAccessRegistry dataAccessRegistry, IPedidoAsignadoManagement management) : base("/api/operaciones")
+        public OperacionesModule(ILogger<OperacionesModule> logger, IPedidoAsignadoManagement management) : base("/api/operaciones")
         {
             _logger = logger;
-            _dataAccessRegistry = dataAccessRegistry;
             _management = management;
             #region endpoints
             Post("/", async (req, res) =>
@@ -53,9 +50,9 @@ namespace OperacionesApi.Modules
                    /*Id generado para la operacion y la respuesta*/
                    var _idRespuesta = Guid.NewGuid().ToString().Substring(0, 5);
                    result.Data.Id = _idRespuesta;
-                   /*Se realiza el insert en la DB de la operacion creada*/
-                   DataAccess.Insert(result.Data);
-                   _management.publicar(result.Data);
+
+                   _management.Guardar(result.Data);
+                   _management.Publicar(result.Data);
 
                    _logger.LogInformation("operacion registrada...");
                    res.StatusCode = 202;
@@ -65,7 +62,7 @@ namespace OperacionesApi.Modules
                catch(Exception exception)
                {
                    res.StatusCode = 500;
-                  _logger.LogError($"Falla en:{req.Method} - OperacionesModule :{exception.Message}"  );
+                  _logger.LogError($"Falla en:{req.Method} - OperacionesModule",exception  );
                }
            });
             

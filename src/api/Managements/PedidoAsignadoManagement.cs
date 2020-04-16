@@ -34,7 +34,7 @@ namespace OperacionesApi.Managements
             /// <summary>
             /// Construye y publica el evento en la cola de mensajes "QL.BORRARME.REQ"
             /// </summary>
-            public void Publicar(Operacion operacionAPublicar)
+        public void Publicar(Operacion operacionAPublicar)
         {
             var pedidoAsignado = new ConstruirEvento<PedidoAsignado>()
                          .DesdeLaApp("OPERACIONES-API")
@@ -51,6 +51,10 @@ namespace OperacionesApi.Managements
             _eventBus.Publish(pedidoAsignado);
         }
 
+        public IList<Operacion> ListarOperaciones()
+        {
+            return DataAccess.GetAll<Operacion>();
+        }
 
  
     }

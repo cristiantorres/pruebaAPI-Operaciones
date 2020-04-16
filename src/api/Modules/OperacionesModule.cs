@@ -17,7 +17,7 @@ using OperacionesApi.Managements;
 using OperacionesApi.Model;
 using Microsoft.AspNetCore.Routing;
 using System;
-
+using System.Collections.Generic;
 
 namespace OperacionesApi.Modules
 {
@@ -65,7 +65,22 @@ namespace OperacionesApi.Modules
                   _logger.LogError($"Falla en:{req.Method} - OperacionesModule",exception  );
                }
            });
-            
+            Get("/", async (req, res) =>
+            {
+                try
+                {
+                    IList<Operacion> _listaOperaciones = new List<Operacion>();
+                   _listaOperaciones = _management.ListarOperaciones();
+                    _logger.LogInformation("listando operaciones existentes...");
+                    res.StatusCode = 200;
+                     await res.AsJson(_listaOperaciones);
+                }
+                catch (Exception exception)
+                {
+                    res.StatusCode = 500;
+                    _logger.LogError($"Falla en:{req.Method} - OperacionesModule", exception);
+                }
+            });
             #endregion
 
             After = async (ctx) =>
